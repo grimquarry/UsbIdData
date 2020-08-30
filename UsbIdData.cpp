@@ -5,7 +5,7 @@
     currently plugged into a computer.  It can also be used to find the vendor name for those
     devices using the hexidecimal vendor ID in the usb.ids file.
     @author Jeremiah Kellogg
-    @version 1.0.0 2020-06-14
+    @version 1.0.1 2020-08-30
 */
 #include "UsbIdData.h"
 
@@ -26,7 +26,7 @@ std::string UsbIdData::getUsbIdFilePath()
 	{
 		path = "An error occured while trying to find the usb.ids file";
 	}
-
+	usbIdFile.close();
 	return path;
 }
 
@@ -37,7 +37,6 @@ std::string UsbIdData::getVendorName(std::string id)
 	usbIdFile.open(pathToUsbId, std::ios::in);
 	if(usbIdFile.is_open())
 	{
-
 		while(getline(usbIdFile, fileLine))
 		{
       char tabCheck = fileLine[0];
